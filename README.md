@@ -41,7 +41,8 @@ To compile your code once and refresh on file change, run
             applicationLink: 'https://www.google.com'
         }
     ]
-    const roleTypes = ["All Roles", "Engineering", "Legal", "Marketing", "Design"]
+    
+    const roleTypes = ["All Roles", "Engineering", "Legal", "Marketing", "Design"] // default selected is All Roles
 
     <ThemeProvider theme={theme}>
         <JobBanner>
@@ -56,7 +57,7 @@ To compile your code once and refresh on file change, run
         </SubBanner>
         <JobsList 
             jobs={jobs} 
-            roleTypes={["All Roles", "Engineering", "Legal", "Marketing", "Design"]} 
+            roleTypes={roleTypes} 
         />
     </ThemeProvider>
 ```
