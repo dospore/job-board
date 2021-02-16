@@ -13,7 +13,7 @@ To compile your code once and refresh on file change, run
 - `npm run start`.
 
 ## List Jobs
-```
+```js
     import { JobBanner, BannerImg, BannerText, SubBanner, ThemeProvider, JobsList} from '@mycelium-ethereum/job-board'
 
     const theme = {
@@ -62,7 +62,7 @@ To compile your code once and refresh on file change, run
 ```
 
 ### Display Job Info
-```
+```js
     <JobInfo {...jobs[0]}>
         {/* Some text. Doesnt have to be markdown but I parse markdown*/}
         <Markdown source={rawMarkdownBody} escapeHtml={false} />
