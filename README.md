@@ -1,12 +1,9 @@
 # Job board component
 
-A template for publishing a React + TypeScript package to npm
+Simple component for advertising available jobs. This was for personal use so I built it for my use case.
+Pretty poor customisability past setting theme colours. 
 
 ## How to use
-
-Fork this repo, clone it to your local computer, and edit the `package.json` along with every other required file to match your project.
-Write the code for your package in TypeScript and Sass, compile it, and publish it to [npm](https://npmjs.com).
-
 To compile your code once, run
 
 - `npm run build`.
@@ -15,20 +12,63 @@ To compile your code once and refresh on file change, run
 
 - `npm run start`.
 
-To publish your package to npm, make sure you're logged in the correct account by running
+## List Jobs
+```
+    import { JobBanner, BannerImg, BannerText, SubBanner, ThemeProvider, JobsList} from '@mycelium-ethereum/job-board'
 
-- `npm login`.
+    const theme = {
+        "primary": "#0000bd",
+        "secondary": "#7B7B7B",
+        "bg": "#E5E5F8"
+    }
 
-Compile your package by running
+    const jobs = [
+        {
+            category: 'engineering'
+            jobTitle: 'Example Engineer Job Title'
+            date: 2020-09-01
+            slug: "engineering-job"
+            location: 'Remote'
+            contract: 'Full-Time'
+            applicationLink: 'https://www.google.com' // this is the link that the user will be directed to after clicking apply
+        }, {
+            category: 'design'
+            jobTitle: 'Example Job Title'
+            date: 2020-09-01
+            slug: "design-job"
+            location: 'Remote'
+            contract: 'Full-Time'
+            applicationLink: 'https://www.google.com'
+        }
+    ]
+    const roleTypes = ["All Roles", "Engineering", "Legal", "Marketing", "Design"]
 
-- `npm run build`
+    <ThemeProvider theme={theme}>
+        <JobBanner>
+            <BannerImg src="/hiring-banner.png" alt='Hiring Banner'/>
+            <BannerText>
+                Careers
+            </BannerText>
+        </JobBanner>
+        <SubBanner>
+            <h1>Example title oooooo yeah</h1>
+            <h2>Example sub heading</h2>
+        </SubBanner>
+        <JobsList 
+            jobs={jobs} 
+            roleTypes={["All Roles", "Engineering", "Legal", "Marketing", "Design"]} 
+        />
+    </ThemeProvider>
+```
 
-Update the package version accordingly by using
-
-- [`npm version [patch | minor | major]`](https://docs.npmjs.com/about-semantic-versioning)
-
-Then publish your package by running
-
-- `npm publish`
-
+### Display Job Info
+```
+    <JobInfo {...jobs[0]}>
+        {/* Some text. Doesnt have to be markdown but I parse markdown*/}
+        <Markdown source={rawMarkdownBody} escapeHtml={false} />
+    </JobInfo
+```
 ### Happy Building ♡
+
+
+
