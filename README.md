@@ -13,7 +13,7 @@ To compile your code once and refresh on file change, run
 - `npm run start`.
 
 ## List Jobs
-```
+```js
     import { JobBanner, BannerImg, BannerText, SubBanner, ThemeProvider, JobsList} from '@mycelium-ethereum/job-board'
 
     const theme = {
@@ -24,24 +24,25 @@ To compile your code once and refresh on file change, run
 
     const jobs = [
         {
-            category: 'engineering'
-            jobTitle: 'Example Engineer Job Title'
-            date: 2020-09-01
-            slug: "engineering-job"
-            location: 'Remote'
-            contract: 'Full-Time'
+            category: 'engineering',
+            jobTitle: 'Example Engineer Job Title',
+            date: '09/01/2020',
+            slug: 'engineering-job',
+            location: 'Remote',
+            contract: 'Full-Time',
             applicationLink: 'https://www.google.com' // this is the link that the user will be directed to after clicking apply
         }, {
-            category: 'design'
-            jobTitle: 'Example Job Title'
-            date: 2020-09-01
-            slug: "design-job"
-            location: 'Remote'
-            contract: 'Full-Time'
+            category: 'design',
+            jobTitle: 'Example Job Title',
+            date: '09/01/2020',
+            slug: "design-job",
+            location: 'Remote',
+            contract: 'Full-Time',
             applicationLink: 'https://www.google.com'
         }
     ]
-    const roleTypes = ["All Roles", "Engineering", "Legal", "Marketing", "Design"]
+    
+    const roleTypes = ["All Roles", "Engineering", "Legal", "Marketing", "Design"] // default selected is All Roles
 
     <ThemeProvider theme={theme}>
         <JobBanner>
@@ -56,13 +57,13 @@ To compile your code once and refresh on file change, run
         </SubBanner>
         <JobsList 
             jobs={jobs} 
-            roleTypes={["All Roles", "Engineering", "Legal", "Marketing", "Design"]} 
+            roleTypes={roleTypes} 
         />
     </ThemeProvider>
 ```
 
 ### Display Job Info
-```
+```js
     <JobInfo {...jobs[0]}>
         {/* Some text. Doesnt have to be markdown but I parse markdown*/}
         <Markdown source={rawMarkdownBody} escapeHtml={false} />
