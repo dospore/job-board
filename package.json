@@ -1,6 +1,6 @@
 {
   "name": "@dospore/job-board",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Job Board component",
   "main": "rollup.config.js",
   "dependencies": {
