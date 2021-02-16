@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { styled } from 'styled-components'
+import React, { ReactNode, useState } from 'react';
+import styled from 'styled-components';
+import { Title, SubText, Button } from './Components' 
+import { Container as BContainer, Row } from 'styled-bootstrap-grid';
+
+const Container = styled(BContainer)`
+    box-sizing: border-box;
+`
 
 export const calcDays = (d1:Date, d2:Date) => {// To calculate the time difference of two dates
     console.log(d1, d2) 
@@ -15,128 +21,159 @@ type JobType = {
     date: Date // date the job add was posted
     slug: string // url slug
     category: 'string'
-
 }
 
-const Job:React.FC = styled(
+const FlexRow = styled(Row)`
+    flex-wrap: nowrap;
+    padding: 0 1em;
+`
+
+const Days = styled(SubText)`
+    text-align: right;
+`
+
+const Learn = styled.a
+`
+    padding-left: 10px;
+`
+
+const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> = 
+styled(
     ({ 
         job, className
-    }: { job: JobType, className: any }) => {
+    }: { job: JobType, className: any } & { children?: ReactNode}) => {
     const { jobTitle, location, contract, date, slug } = job;
     return (
-        <div className="job">
-            <div className="info">
-                <h1>{jobTitle}</h1>
-                <h2>{location} | {contract}</h2>
-            </div>
-            <div className="right-content">
-                <a href={`/${slug}`}>
-                    <button className="learn">Learn more</button>
-                </a>
-                <h2>{calcDays(new Date(date), new Date())} days ago</h2>
-            </div>
-        </div>
+        <Container className={className}>
+            <FlexRow>
+                <Title>{jobTitle}</Title>
+                <Learn href={`/careers/${slug}`}>
+                    <Button>Learn more</Button>
+                </Learn>
+            </FlexRow>
+            <FlexRow>
+                <SubText>
+                    {location} | {contract}
+                </SubText>
+                <Days>
+                    {calcDays(new Date(date), new Date())} days ago
+                </Days>
+            </FlexRow>
+        </Container>
     )
     }
 )
 `
-    .job {
-        display: flex;
-        border: 2px solid #E5E5F8;
-        border-radius: 4px;
-        margin: 10px 0px;
-        padding: 0px 1em;
-    }
-    .job .info {
-        width: 100%;
-    }
-    .job .right-content {
-        float: right;
-        text-align: right;
-        padding: 20px 0;
-        width: 20rem;
-    }
-    .learn {
-        padding: 10px;
-        margin: 5px 0;
-        width: 100px;
-        background: #0000bd;
-        border: none;
-        border-radius: 4px;
-        font-white: 600;
-        color: #fff;
-    }
-    .job h2 {
-        color: #7B7B7B;
-        font-size: 20px;
-    }
-    .learn:hover {
-        cursor: pointer;
-    }
-    .learn:focus {
-        outline: none
-    }
+    display: flex;
+    flex-direction: column;
+    border: 2px solid ${(props: any) => props.theme.bg as string};
+    border-radius: 4px;
+    margin: 10px 0px;
+    padding-top: 1em;
+    padding-bottom: 1em;
 `
 
 
-const JobsList:React.FC = styled(({ jobs, className }: { jobs: JobType[], className: any }) => {
-    const [selectedRole, setRoleType] = useState('All Roles')
-    const roleTypes = ["All Roles", "Engineering", "Legal", "Marketing", "Design"]
+const Roles:React.FC = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+`
+
+const Jobs:React.FC = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+type RProps = {
+    selected: boolean
+    handleClick: () => void
+    className?: any
+    children?: ReactNode
+}
+const RoleType:React.FC<RProps> = styled(
+    ({ 
+        className, selected, handleClick, children
+    }: RProps ) =>
+    <button onClick={() => handleClick()} datatype={selected ? 'SELECTED' : ''} className={className}>
+        {children}
+    </button>
+)`
+    padding: 10px 2rem;
+    margin: 5px 1em 5px 0px;
+    background: ${(props: any) => props.theme.bg as string};
+    border: none;
+    border-radius: 4px;
+    font-white: 600;
+    color: ${(props: any) => props.theme.primary as string};
+    width: 48%;
+    margin: 5px 1% 5px 1%;
+
+    @media screen and (min-width: 600px) {
+        width: 24%;
+        margin: 5px 0.5% 5px 0.5%;
+    }
+
+    @media screen and (min-width: 800px) {
+        width: 19%;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+    &:focus {
+        outline: none
+    }
+    &[datatype="SELECTED"] {
+        color: white;
+        background: ${(props: any) => props.theme.primary as string};
+    }
+`
+
+const JobsList:React.FC = styled(
+    ({ 
+        jobs, roleTypes, className
+    }: { jobs: JobType[], roleTypes: string[], className: any }) => {
+
+    const [selectedRole, setRoleType] = useState('All Roles');
+
     return (
-        <div className={className['jobs-container']}>
+        <Container className={className}>
             <h1>Open Roles</h1>
-            <div className="roles">
+            <Roles>
                 {roleTypes.map((roleType) => 
-                    <button onClick={() => setRoleType(roleType)}className={`btn ${roleType === selectedRole ? 'selected' : ''}`}>
+                    <RoleType handleClick={() => setRoleType(roleType)} selected={selectedRole === roleType}>
                         {roleType}
-                    </button>
+                    </RoleType>
                 )}
-            </div>
-            <div className="jobs">
+            </Roles>
+            <Jobs>
                 {jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category).map((job:JobType) => 
                     <Job job={job} />
                 )}
-            </div>
-        </div>
+            </Jobs>
+        </Container>
     )
 }
 )`
-    .jobs-container {
-        flex-direction: column;
-        max-width: 70rem;
-        margin: 5rem auto;
+    flex-direction: column;
+    margin: 5rem auto;
+
+    &[data-name=container] {
+        box-sizing: border-box;
     }
 
-    .jobs-container h1 {
-        color: #0000bd;
+    > [data-name=col-xs-12]{
+        box-sizing: border-box;
+    }
+
+    > h1 {
+        color: ${(props: any) => props.theme.primary as string};
         font-weight: 600;
     }
-    .roles {
-        display: flex;
-        margin-bottom: 20px;
-    }
-    .jobs {
-        display: flex;
-        flex-direction: column;
-    }
-    .btn {
-        padding: 10px 2rem;
-        margin: 5px 1em 5px 0px;
-        background: #E5E5F8;
-        border: none;
-        border-radius: 4px;
-        font-white: 600;
-        color: #0000bd;
-    }
-    .btn:hover {
-        cursor: pointer;
-    }
-    .btn:focus {
-        outline: none
-    }
-    .selected {
-        color: white;
-        background: #0000bd;
+
+    @media screen and (max-width: 600px) {
+        margin: 1rem auto;
     }
 `
 

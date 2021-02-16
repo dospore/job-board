@@ -1,4 +1,4 @@
-# npm-react-typescript-template
+# Job board component
 
 A template for publishing a React + TypeScript package to npm
 
