@@ -12,6 +12,7 @@ const BannerImg = styled.img`
     height: 100%;
     min-height: 20vh;
     object-fit: cover;
+    margin-bottom: -5px;
 `
 
 const BannerText = styled(
