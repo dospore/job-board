@@ -136,6 +136,8 @@ const JobsList:React.FC = styled(
     }: { jobs: JobType[], roleTypes: string[], className: any }) => {
 
     const [selectedRole, setRoleType] = useState('All Roles');
+    
+    const filteredJobs = jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category);
 
     return (
         <GridTheme>
@@ -149,9 +151,7 @@ const JobsList:React.FC = styled(
                     )}
                 </Roles>
                 <Jobs>
-                    {jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category).map((job:JobType) => 
-                        <Job job={job} />
-                    )}
+                    {filteredJobs.map((job:JobType) => <Job job={job} />)}
                 </Jobs>
             </Container>
         </GridTheme>
@@ -159,7 +159,8 @@ const JobsList:React.FC = styled(
 }
 )`
     flex-direction: column;
-    margin: 5rem auto;
+    margin: auto;
+    padding: 5rem 0;
 
     &[data-name=container] {
         box-sizing: border-box;

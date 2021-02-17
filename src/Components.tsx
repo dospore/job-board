@@ -44,6 +44,14 @@ export const Button = styled.button
     border-radius: 4px;
     font-weight: 600;
     color: #fff;
+    box-shadow: 0 3px 6px #00000029;
+
+    &[disabled] {
+        opacity: 0.3;
+    }
+    &[disabled]:hover {
+        cursor: not-allowed;
+    }
 
     @media screen and (max-width: 600px) {
         width: 7rem;
