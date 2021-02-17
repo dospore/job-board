@@ -5,7 +5,6 @@
   "main": "rollup.config.js",
   "dependencies": {
     "@types/styled-components": "^5.1.7",
-    "react": "^17.0.1",
     "styled-bootstrap-grid": "^3.1.0",
     "styled-components": "^5.2.1"
   },
