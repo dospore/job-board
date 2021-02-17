@@ -2,7 +2,7 @@
   "name": "@dospore/job-board",
   "version": "1.0.8",
   "description": "Job Board component",
-  "main": "rollup.config.js",
+  "main": "dist/index.js",
   "dependencies": {
     "@types/styled-components": "^5.1.7",
     "styled-bootstrap-grid": "^3.1.0",

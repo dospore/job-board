@@ -1,4 +1,16 @@
+import React from 'react';
 import styled from 'styled-components';
+import { GridThemeProvider } from 'styled-bootstrap-grid';
+
+export const gridTheme = {
+  container: {
+    maxWidth: {
+      xxl: 1280,
+      xl: 1280,
+      lg: 1280,
+    },
+  },
+}
 
 export const Title = styled.h1`
     color: ${(props: any) => props.theme.primary as string};
@@ -45,3 +57,11 @@ export const Button = styled.button
         outline: none
     }
 `
+
+
+export const GridTheme:React.FC = ({ children }) => 
+    <GridThemeProvider gridTheme={gridTheme}>
+        <>
+        {children}
+        </>
+    </GridThemeProvider>

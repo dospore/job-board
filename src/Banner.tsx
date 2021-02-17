@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container as BContainer } from 'styled-bootstrap-grid';
+import { GridTheme } from './Components';
 
 const Container = styled(BContainer)`
     box-sizing: border-box;
@@ -17,9 +18,11 @@ const BannerText = styled(
     ({
         className, children
     }) => (
-        <Container className={className}>
-            {children}
-        </Container>
+        <GridTheme>
+            <Container className={className}>
+                {children}
+            </Container>
+        </GridTheme>
     )
 )`
     position: absolute;
@@ -75,11 +78,13 @@ const SubBanner:React.FC = styled(
     ({
         className, children
     }) => (
-        <div className={className}>
-            <StyledContainer>
-                {children}
-            </StyledContainer>
-        </div>
+        <GridTheme>
+            <div className={className}>
+                <StyledContainer>
+                    {children}
+                </StyledContainer>
+            </div>
+        </GridTheme>
     )
 )
 `

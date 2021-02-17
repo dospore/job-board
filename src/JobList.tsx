@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
-import { Title, SubText, Button } from './Components' 
+import { Title, SubText, Button, GridTheme } from './Components' 
 import { Container as BContainer, Row } from 'styled-bootstrap-grid';
 
 const Container = styled(BContainer)`
@@ -47,7 +47,7 @@ styled(
         <Container className={className}>
             <FlexRow>
                 <Title>{jobTitle}</Title>
-                <Learn href={`/careers/${slug}`}>
+                <Learn href={`/jobs/${slug}`}>
                     <Button>Learn more</Button>
                 </Learn>
             </FlexRow>
@@ -138,21 +138,23 @@ const JobsList:React.FC = styled(
     const [selectedRole, setRoleType] = useState('All Roles');
 
     return (
-        <Container className={className}>
-            <h1>Open Roles</h1>
-            <Roles>
-                {roleTypes.map((roleType) => 
-                    <RoleType handleClick={() => setRoleType(roleType)} selected={selectedRole === roleType}>
-                        {roleType}
-                    </RoleType>
-                )}
-            </Roles>
-            <Jobs>
-                {jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category).map((job:JobType) => 
-                    <Job job={job} />
-                )}
-            </Jobs>
-        </Container>
+        <GridTheme>
+            <Container className={className}>
+                <h1>Open Roles</h1>
+                <Roles>
+                    {roleTypes.map((roleType) => 
+                        <RoleType handleClick={() => setRoleType(roleType)} selected={selectedRole === roleType}>
+                            {roleType}
+                        </RoleType>
+                    )}
+                </Roles>
+                <Jobs>
+                    {jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category).map((job:JobType) => 
+                        <Job job={job} />
+                    )}
+                </Jobs>
+            </Container>
+        </GridTheme>
     )
 }
 )`
