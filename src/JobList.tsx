@@ -19,7 +19,7 @@ type JobType = {
     location: 'Remote' | 'In House' // location of work
     contract: 'Full-time' | 'Part-time' | 'Casual' | 'Flexible' // contract type
     date: Date // date the job add was posted
-    slug: string // url slug
+    link: string // url link to the job, prepend with /, something like /careers/slug
     category: 'string'
 }
 
@@ -42,12 +42,12 @@ styled(
     ({ 
         job, className
     }: { job: JobType, className: any } & { children?: ReactNode}) => {
-    const { jobTitle, location, contract, date, slug } = job;
+    const { jobTitle, location, contract, date, link } = job;
     return (
         <Container className={className}>
             <FlexRow>
                 <Title>{jobTitle}</Title>
-                <Learn href={`/jobs/${slug}`}>
+                <Learn href={`${link}`}>
                     <Button>Learn more</Button>
                 </Learn>
             </FlexRow>

@@ -27,7 +27,7 @@ To compile your code once and refresh on file change, run
             category: 'engineering',
             jobTitle: 'Example Engineer Job Title',
             date: '09/01/2020',
-            slug: 'engineering-job',
+            link: '/careers/engineering-job',
             location: 'Remote',
             contract: 'Full-Time',
             applicationLink: 'https://www.google.com' // this is the link that the user will be directed to after clicking apply
@@ -35,7 +35,7 @@ To compile your code once and refresh on file change, run
             category: 'design',
             jobTitle: 'Example Job Title',
             date: '09/01/2020',
-            slug: "design-job",
+            link: "/careers/design-job",
             location: 'Remote',
             contract: 'Full-Time',
             applicationLink: 'https://www.google.com'
