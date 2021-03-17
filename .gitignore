@@ -49,3 +49,9 @@ typings/
 
 # generate output
 dist
+/.idea/.gitignore
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/job-board.iml
+/.idea/modules.xml
+/.idea/codeStyles/Project.xml
+/.idea/vcs.xml

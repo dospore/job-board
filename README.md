@@ -25,19 +25,19 @@ To compile your code once and refresh on file change, run
     const jobs = [
         {
             category: 'engineering',
-            jobTitle: 'Example Engineer Job Title',
-            date: '09/01/2020',
+            title: 'Example Engineer Job Title',
+            postDate: '09/01/2020',
             link: '/careers/engineering-job',
             location: 'Remote',
-            contract: 'Full-Time',
+            employmentType: 'Full-Time',
             applicationLink: 'https://www.google.com' // this is the link that the user will be directed to after clicking apply
         }, {
             category: 'design',
-            jobTitle: 'Example Job Title',
-            date: '09/01/2020',
+            title: 'Example Job Title',
+            postDate: '09/01/2020',
             link: "/careers/design-job",
             location: 'Remote',
-            contract: 'Full-Time',
+            employmentType: 'Full-Time',
             applicationLink: 'https://www.google.com'
         }
     ]

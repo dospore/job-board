@@ -6,16 +6,16 @@ import { calcDays } from './JobList';
 
 export const JobInfo = styled(
     ({
-        className, children, jobTitle, 
-        location, contract, date, applicationLink
+        className, children, title,
+        location, employmentType, postDate, applicationLink
     }) => (
         <GridTheme>
             <Container className={className}>
                 <Title>
-                    {jobTitle}
+                    {title}
                 </Title>
                 <SubText>
-                    {location} | {contract} - {calcDays(new Date(date), new Date())} days ago
+                    {location} | {employmentType} - {calcDays(new Date(postDate), new Date())} days ago
                 </SubText>
                 {children}
                 <a href={applicationLink} target="_blank" rel="noreferrer noopener">
