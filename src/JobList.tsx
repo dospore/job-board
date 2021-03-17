@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
-import { Title, SubText, Button, GridTheme } from './Components' 
+import { Title, SubText, Button, GridTheme } from './Components'
 import { Container as BContainer, Row } from 'styled-bootstrap-grid';
 
 const Container = styled(BContainer)`
@@ -8,17 +8,17 @@ const Container = styled(BContainer)`
 `
 
 export const calcDays = (d1:Date, d2:Date) => {// To calculate the time difference of two dates
-    console.log(d1, d2) 
-    var timeDiff = d2.getTime() - d1.getTime(); 
-    // To calculate the no. of days between two dates 
-    return Math.round(timeDiff / (1000 * 3600 * 24)); 
+    console.log(d1, d2)
+    var timeDiff = d2.getTime() - d1.getTime();
+    // To calculate the no. of days between two dates
+    return Math.round(timeDiff / (1000 * 3600 * 24));
 }
 
 type JobType = {
-    jobTitle: string // title of the job
+    title: string // title of the job
     location: 'Remote' | 'In House' // location of work
-    contract: 'Full-time' | 'Part-time' | 'Casual' | 'Flexible' // contract type
-    date: Date // date the job add was posted
+    employmentType: 'Full-time' | 'Part-time' | 'Casual' | 'Flexible' // contract type
+    postDate: Date // date the job add was posted
     link: string // url link to the job, prepend with /, something like /careers/slug
     category: 'string'
 }
@@ -37,26 +37,26 @@ const Learn = styled.a
     padding-left: 10px;
 `
 
-const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> = 
+const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> =
 styled(
-    ({ 
+    ({
         job, className
     }: { job: JobType, className: any } & { children?: ReactNode}) => {
-    const { jobTitle, location, contract, date, link } = job;
+    const { title, location, employmentType, postDate, link } = job;
     return (
         <Container className={className}>
             <FlexRow>
-                <Title>{jobTitle}</Title>
+                <Title>{title}</Title>
                 <Learn href={`${link}`}>
                     <Button>Learn more</Button>
                 </Learn>
             </FlexRow>
             <FlexRow>
                 <SubText>
-                    {location} | {contract}
+                    {location} | {employmentType}
                 </SubText>
                 <Days>
-                    {calcDays(new Date(date), new Date())} days ago
+                    {calcDays(new Date(postDate), new Date())} days ago
                 </Days>
             </FlexRow>
         </Container>
@@ -92,7 +92,7 @@ type RProps = {
     children?: ReactNode
 }
 const RoleType:React.FC<RProps> = styled(
-    ({ 
+    ({
         className, selected, handleClick, children
     }: RProps ) =>
     <button onClick={() => handleClick()} datatype={selected ? 'SELECTED' : ''} className={className}>
@@ -131,12 +131,12 @@ const RoleType:React.FC<RProps> = styled(
 `
 
 const JobsList:React.FC = styled(
-    ({ 
+    ({
         jobs, roleTypes, className
     }: { jobs: JobType[], roleTypes: string[], className: any }) => {
 
     const [selectedRole, setRoleType] = useState('All Roles');
-    
+
     const filteredJobs = jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category);
 
     return (
@@ -144,7 +144,7 @@ const JobsList:React.FC = styled(
             <Container className={className}>
                 <h1>Open Roles</h1>
                 <Roles>
-                    {roleTypes.map((roleType) => 
+                    {roleTypes.map((roleType) =>
                         <RoleType handleClick={() => setRoleType(roleType)} selected={selectedRole === roleType}>
                             {roleType}
                         </RoleType>
