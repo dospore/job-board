@@ -17,10 +17,10 @@ export const calcDays = (d1:Date, d2:Date) => {// To calculate the time differen
 type JobType = {
     title: string // title of the job
     location: 'Remote' | 'In House' // location of work
-    employmentType: 'Full-time' | 'Part-time' | 'Casual' | 'Flexible' // contract type
+    employmentType: { typeName: string }
     postDate: Date // date the job add was posted
     link: string // url link to the job, prepend with /, something like /careers/slug
-    category: 'string'
+    category: { categoryName: string }
 }
 
 const FlexRow = styled(Row)`
@@ -53,7 +53,7 @@ styled(
             </FlexRow>
             <FlexRow>
                 <SubText>
-                    {location} | {employmentType}
+                    {location} | {employmentType.typeName}
                 </SubText>
                 <Days>
                     {/*{calcDays(new Date(postDate), new Date())} days ago*/}
@@ -138,7 +138,7 @@ const JobsList:React.FC = styled(
 
     const [selectedRole, setRoleType] = useState('All Roles');
 
-    const filteredJobs = jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category);
+    const filteredJobs = jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category.categoryName);
 
     return (
         <GridTheme>
