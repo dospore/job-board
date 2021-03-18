@@ -56,7 +56,8 @@ styled(
                     {location} | {employmentType}
                 </SubText>
                 <Days>
-                    {calcDays(new Date(postDate), new Date())} days ago
+                    {/*{calcDays(new Date(postDate), new Date())} days ago*/}
+                    Available since {postDate}
                 </Days>
             </FlexRow>
         </Container>
