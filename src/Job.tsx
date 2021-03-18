@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'styled-bootstrap-grid';
 import { Title, SubText, Button, GridTheme } from './Components'
-import { calcDays } from './JobList';
 
 export const JobInfo = styled(
     ({
         className, children, title,
-        location, employmentType, postDate, applicationLink
+        location, employmentType, postDate, link
     }) => (
         <GridTheme>
             <Container className={className}>
@@ -15,10 +14,10 @@ export const JobInfo = styled(
                     {title}
                 </Title>
                 <SubText>
-                    {location} | {employmentType} - {calcDays(new Date(postDate), new Date())} days ago
+                    {location} | {employmentType} -- Available since {postDate}
                 </SubText>
                 {children}
-                <a href={applicationLink} target="_blank" rel="noreferrer noopener">
+                <a href={link} target="_blank" rel="noreferrer noopener">
                     <Button >Apply Now</Button>
                 </a>
             </Container>
