@@ -27,18 +27,16 @@ To compile your code once and refresh on file change, run
             category: 'engineering',
             title: 'Example Engineer Job Title',
             postDate: '09/01/2020',
-            link: '/careers/engineering-job',
             location: 'Remote',
             employmentType: 'Full-Time',
-            applicationLink: 'https://www.google.com' // this is the link that the user will be directed to after clicking apply
+            link: 'https://www.google.com' // this is the link that the user will be directed to after clicking apply
         }, {
             category: 'design',
             title: 'Example Job Title',
             postDate: '09/01/2020',
-            link: "/careers/design-job",
             location: 'Remote',
             employmentType: 'Full-Time',
-            applicationLink: 'https://www.google.com'
+            link: 'https://www.google.com'
         }
     ]
     
