@@ -1,6 +1,6 @@
 {
   "name": "@dospore/job-board",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Job Board component",
   "main": "dist/index.js",
   "dependencies": {
