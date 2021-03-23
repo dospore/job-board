@@ -1,5 +1,5 @@
 {
-  "name": "@dospore/job-board",
+  "name": "@mycelium-ethereum/job-board",
   "version": "1.0.14",
   "description": "Job Board component",
   "main": "dist/index.js",
@@ -35,12 +35,12 @@
     "start": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "git+https://github.com/tetther1122/job-board.git",
+  "repository": "git+https://github.com/dospore/job-board.git",
   "author": "dospore",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tetther1122/job-board/issues"
+    "url": "https://github.com/dospore/job-board/issues"
   },
-  "homepage": "https://github.com/tetther1122/job-board#readme",
+  "homepage": "https://github.com/dospore/job-board#readme",
   "private": false
 }
