@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
-import { Title, SubText, Button, GridTheme } from './Components'
+import { Title, SubText, GridTheme } from './Components'
 import { Container as BContainer, Row } from 'styled-bootstrap-grid';
 
 const Container = styled(BContainer)`
@@ -24,17 +24,18 @@ type JobType = {
 }
 
 const FlexRow = styled(Row)`
-    flex-wrap: nowrap;
-    padding: 0 1em;
+    //flex-wrap: nowrap;
+    //padding: 0 1em;
 `
 
-const Days = styled(SubText)`
-    text-align: right;
-`
+// const Days = styled(SubText)`
+//     //text-align: right;
+// `
 
 const Learn = styled.a
 `
-    padding-left: 10px;
+    color: #fff;
+    margin-bottom: 6rem;
 `
 
 const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> =
@@ -42,48 +43,50 @@ styled(
     ({
         job, className
     }: { job: JobType, className: any } & { children?: ReactNode}) => {
-    const { title, location, employmentType, postDate, link } = job;
+    const { title, location, employmentType, link } = job;
     return (
         <Container className={className}>
             <FlexRow>
+                <SubText>
+                    {employmentType.typeName} / {location}
+                </SubText>
                 <Title>{title}</Title>
                 <Learn href={`${link}`}>
-                    <Button>Learn more</Button>
+                    Learn more
                 </Learn>
             </FlexRow>
-            <FlexRow>
-                <SubText>
-                    {location} | {employmentType.typeName}
-                </SubText>
-                <Days>
-                    {/*{calcDays(new Date(postDate), new Date())} days ago*/}
-                    Available since {postDate}
-                </Days>
-            </FlexRow>
+            {/*<FlexRow>*/}
+            {/*    */}
+            {/*    /!*<Days>*!/*/}
+            {/*    /!*    /!*{calcDays(new Date(postDate), new Date())} days ago*!/*!/*/}
+            {/*    /!*    Available since {postDate}*!/*/}
+            {/*    /!*</Days>*!/*/}
+            {/*</FlexRow>*/}
         </Container>
     )
     }
 )
 `
-    display: flex;
-    flex-direction: column;
-    border: 2px solid ${(props: any) => props.theme.bg as string};
-    border-radius: 4px;
-    margin: 10px 0px;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    flex: 50%;
+    // display: flex;
+    // border: 2px solid ${(props: any) => props.theme.bg as string};
+    border-top: 1px solid #083E2E;
+    // border-radius: 4px;
+    // margin: 10px 0px;
+    // padding-top: 1em;
+    // padding-bottom: 1em;
 `
 
 
 const Roles:React.FC = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+    //display: flex;
+    //flex-wrap: wrap;
+    margin-bottom: 3rem;
 `
 
 const Jobs:React.FC = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
 `
 
 type RProps = {
@@ -100,34 +103,38 @@ const RoleType:React.FC<RProps> = styled(
         {children}
     </button>
 )`
-    padding: 10px 2rem;
-    margin: 5px 1em 5px 0px;
-    background: ${(props: any) => props.theme.bg as string};
+    font-size: 0.9em;
     border: none;
-    border-radius: 4px;
-    font-white: 600;
-    color: ${(props: any) => props.theme.primary as string};
-    width: 48%;
-    margin: 5px 1% 5px 1%;
+    background-color: #041F17;
+    // background: ${(props: any) => props.theme.bg as string};
+    color: #fff;
+    // color: ${(props: any) => props.theme.primary as string};
+    padding: 10px 2rem;
+    // border: none;
+    // border-radius: 4px;
+    // font-white: 600;
+     width: 48%;
+     margin: 5px 1% 5px 1%;
 
-    @media screen and (min-width: 600px) {
-        width: 24%;
-        margin: 5px 0.5% 5px 0.5%;
-    }
+     @media screen and (min-width: 600px) {
+         width: 24%;
+         margin: 5px 0.5% 5px 0.5%;
+     }
 
-    @media screen and (min-width: 800px) {
-        width: 19%;
-    }
+     @media screen and (min-width: 800px) {
+         width: 19%;
+     }
 
-    &:hover {
-        cursor: pointer;
-    }
-    &:focus {
-        outline: none
-    }
+    // &:hover {
+    //     cursor: pointer;
+    // }
+    // &:focus {
+    //     outline: none
+    // }
     &[datatype="SELECTED"] {
-        color: white;
-        background: ${(props: any) => props.theme.primary as string};
+        color: #A6D792;
+        opacity: 20%;
+        //background: ${(props: any) => props.theme.primary as string};
     }
 `
 
@@ -143,7 +150,7 @@ const JobsList:React.FC = styled(
     return (
         <GridTheme>
             <Container className={className}>
-                <h1>Open Roles</h1>
+                {/*<h1>Open Roles</h1>*/}
                 <Roles>
                     {roleTypes.map((roleType) =>
                         <RoleType handleClick={() => setRoleType(roleType)} selected={selectedRole === roleType}>
@@ -159,26 +166,26 @@ const JobsList:React.FC = styled(
     )
 }
 )`
-    flex-direction: column;
-    margin: auto;
-    padding: 5rem 0;
-
-    &[data-name=container] {
-        box-sizing: border-box;
-    }
-
-    > [data-name=col-xs-12]{
-        box-sizing: border-box;
-    }
-
-    > h1 {
-        color: ${(props: any) => props.theme.primary as string};
-        font-weight: 600;
-    }
-
-    @media screen and (max-width: 600px) {
-        margin: 1rem auto;
-    }
+    //flex-direction: column;
+    // margin: auto;
+     padding: 4rem 0;
+    //
+    // &[data-name=container] {
+    //     box-sizing: border-box;
+    // }
+    //
+    // > [data-name=col-xs-12]{
+    //     box-sizing: border-box;
+    // }
+    //
+    // > h1 {
+    //     color: ${(props: any) => props.theme.primary as string};
+    //     font-weight: 600;
+    // }
+    //
+    // @media screen and (max-width: 600px) {
+    //     margin: 1rem auto;
+    // }
 `
 
 export { Job, JobsList }
