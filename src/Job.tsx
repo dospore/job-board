@@ -14,7 +14,8 @@ export const JobInfo = styled(
                     {title}
                 </Title>
                 <SubText>
-                    {location} | {employmentType.typeName} -- Available since {postDate}
+                    {employmentType.typeName} / {location} <br/><br/>
+                    Available since {postDate}
                 </SubText>
                 {children}
                 <a href={link} target="_blank" rel="noreferrer noopener">
