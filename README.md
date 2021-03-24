@@ -14,7 +14,7 @@ To compile your code once and refresh on file change, run
 
 ## List Jobs
 ```js
-    import { JobBanner, BannerImg, BannerText, SubBanner, ThemeProvider, JobsList} from '@dospore/job-board'
+    import { JobBanner, BannerImg, BannerText, SubBanner, ThemeProvider, JobsList} from '@mycelium-ethereum/job-board'
 
     const theme = {
         "primary": "#0000bd",
