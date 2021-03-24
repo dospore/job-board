@@ -77,7 +77,9 @@ styled(
 
 
 const Roles:React.FC = styled.div`
-    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #083E2E
+    margin-bottom: 2px;
 `
 
 const Jobs:React.FC = styled.div`
@@ -109,29 +111,28 @@ const RoleType:React.FC<RProps> = styled(
      width: 48%;
      margin: 5px 1% 5px 1%;
 
-     @media screen and (min-width: 600px) {
-         width: 24%;
-         margin: 5px 0.5% 5px 0.5%;
-     }
+    @media screen and (min-width: 600px) {
+        width: 24%;
+        margin: 5px 0.5% 5px 0.5%;
+    }
 
-     @media screen and (min-width: 800px) {
-         width: 19%;
-     }
+    @media screen and (min-width: 800px) {
+        width: 19%;
+    }
 
-    // &:hover {
-    //     cursor: pointer;
-    // }
+    &:hover {
+        cursor: pointer;
+    }
     // &:focus {
     //     outline: none
     // }
     &[datatype="SELECTED"] {
         color: #A6D792;
-        opacity: 20%;
         //background: ${(props: any) => props.theme.primary as string};
     }
 `
 
-const JobsList:React.FC = styled(
+const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className: any }> = styled(
     ({
         jobs, roleTypes, className
     }: { jobs: JobType[], roleTypes: string[], className: any }) => {
@@ -143,7 +144,6 @@ const JobsList:React.FC = styled(
     return (
         <GridTheme>
             <Container className={className}>
-                {/*<h1>Open Roles</h1>*/}
                 <Roles>
                     {roleTypes.map((roleType) =>
                         <RoleType handleClick={() => setRoleType(roleType)} selected={selectedRole === roleType}>
