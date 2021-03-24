@@ -68,19 +68,15 @@ styled(
 )
 `
     flex: 50%;
-    // display: flex;
     // border: 2px solid ${(props: any) => props.theme.bg as string};
     border-top: 1px solid #083E2E;
-    // border-radius: 4px;
-    // margin: 10px 0px;
-    // padding-top: 1em;
-    // padding-bottom: 1em;
+    @media only screen and (max-width: 800px) {
+        flex: 100%;
+    }
 `
 
 
 const Roles:React.FC = styled.div`
-    //display: flex;
-    //flex-wrap: wrap;
     margin-bottom: 3rem;
 `
 
@@ -110,9 +106,6 @@ const RoleType:React.FC<RProps> = styled(
     color: #fff;
     // color: ${(props: any) => props.theme.primary as string};
     padding: 10px 2rem;
-    // border: none;
-    // border-radius: 4px;
-    // font-white: 600;
      width: 48%;
      margin: 5px 1% 5px 1%;
 
