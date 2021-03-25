@@ -132,7 +132,7 @@ const RoleType:React.FC<RProps> = styled(
     }
 `
 
-const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className: any }> = styled(
+const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className?: any }> = styled(
     ({
         jobs, roleTypes, className
     }: { jobs: JobType[], roleTypes: string[], className: any }) => {
