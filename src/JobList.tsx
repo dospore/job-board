@@ -36,6 +36,9 @@ const Learn = styled.a
 `
     color: #fff;
     margin-bottom: 6rem;
+    &:hover {
+        color: #A6D792;
+    }
 `
 
 const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> =
