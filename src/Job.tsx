@@ -6,7 +6,7 @@ import { Title, SubText, Button, GridTheme } from './Components'
 export const JobInfo = styled(
     ({
         className, children, title,
-        location, employmentType, postDate, link
+        location, employmentType, link
     }) => (
         <GridTheme>
             <Container className={className}>
@@ -15,7 +15,6 @@ export const JobInfo = styled(
                 </Title>
                 <SubText>
                     {employmentType.typeName} / {location} <br/><br/>
-                    Available since {postDate}
                 </SubText>
                 {children}
                 <a href={link} target="_blank" rel="noreferrer noopener">
