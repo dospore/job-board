@@ -1,18 +1,11 @@
 import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
-import { Title, SubText, GridTheme } from './Components'
+import { Title, GridTheme } from './Components'
 import { Container as BContainer, Row } from 'styled-bootstrap-grid';
 
 const Container = styled(BContainer)`
     box-sizing: border-box;
 `
-
-export const calcDays = (d1:Date, d2:Date) => {// To calculate the time difference of two dates
-    console.log(d1, d2)
-    var timeDiff = d2.getTime() - d1.getTime();
-    // To calculate the no. of days between two dates
-    return Math.round(timeDiff / (1000 * 3600 * 24));
-}
 
 type JobType = {
     title: string // title of the job
@@ -23,14 +16,9 @@ type JobType = {
     category: { categoryName: string }
 }
 
-const FlexRow = styled(Row)`
-    //flex-wrap: nowrap;
-    //padding: 0 1em;
+const FlexRow = styled(Row)
 `
-
-// const Days = styled(SubText)`
-//     //text-align: right;
-// `
+`
 
 const Learn = styled.a
 `
@@ -46,25 +34,15 @@ styled(
     ({
         job, className
     }: { job: JobType, className: any } & { children?: ReactNode}) => {
-    const { title, location, employmentType, link } = job;
+    const { title, link } = job;
     return (
         <Container className={className}>
             <FlexRow>
-                <SubText>
-                    {employmentType.typeName} / {location}
-                </SubText>
                 <Title>{title}</Title>
                 <Learn href={`${link}`}>
                     Learn more
                 </Learn>
             </FlexRow>
-            {/*<FlexRow>*/}
-            {/*    */}
-            {/*    /!*<Days>*!/*/}
-            {/*    /!*    /!*{calcDays(new Date(postDate), new Date())} days ago*!/*!/*/}
-            {/*    /!*    Available since {postDate}*!/*/}
-            {/*    /!*</Days>*!/*/}
-            {/*</FlexRow>*/}
         </Container>
     )
     }
@@ -81,7 +59,6 @@ styled(
 
 const Roles:React.FC = styled.div`
     padding-bottom: 3rem;
-    border-bottom: 1px solid #083E2E
     margin-bottom: 2px;
 `
 
@@ -103,7 +80,8 @@ const RoleType:React.FC<RProps> = styled(
     <button onClick={() => handleClick()} datatype={selected ? 'SELECTED' : ''} className={className}>
         {children}
     </button>
-)`
+)
+`
     font-size: 0.9em;
     border: none;
     background-color: #041F17;
@@ -126,9 +104,7 @@ const RoleType:React.FC<RProps> = styled(
     &:hover {
         cursor: pointer;
     }
-    // &:focus {
-    //     outline: none
-    // }
+
     &[datatype="SELECTED"] {
         color: #A6D792;
         //background: ${(props: any) => props.theme.primary as string};
@@ -161,9 +137,8 @@ const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className?: any 
         </GridTheme>
     )
 }
-)`
-    //flex-direction: column;
-    // margin: auto;
+)
+`
      padding: 4rem 0;
     //
     // &[data-name=container] {
