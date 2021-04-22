@@ -2,8 +2,31 @@ import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { Title, GridTheme } from './Components'
 import { Container as BContainer, Row } from 'styled-bootstrap-grid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 
-const Container = styled(BContainer)`
+const JobContainer = styled.a
+`
+    .arrow {
+        display: none;
+    }
+    
+    &:hover {
+        text-decoration: none;
+        .title {
+            color: #A6D792;
+        }
+        .learn {
+            color: #A6D792;
+        }
+        .arrow {
+            display: block;
+        }
+    }
+`
+
+const Container = styled(BContainer)
+`
     box-sizing: border-box;
 `
 
@@ -16,17 +39,12 @@ type JobType = {
     category: { categoryName: string }
 }
 
-const FlexRow = styled(Row)
+const Learn = styled.div
 `
-`
-
-const Learn = styled.a
-`
+    display: flex;
+    flex-direction: row;
     color: #fff;
     margin-bottom: 6rem;
-    &:hover {
-        color: #A6D792;
-    }
 `
 
 const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> =
@@ -37,25 +55,23 @@ styled(
     const { title, link } = job;
     return (
         <Container className={className}>
-            <FlexRow>
-                <Title>{title}</Title>
-                <Learn href={`${link}`}>
-                    Learn more
-                </Learn>
-            </FlexRow>
+            <JobContainer href={`${link}`}>
+                <Row>
+                    <Title className='title'>{title}</Title>
+                    <Learn className='learn'><div>Learn more</div>&nbsp;&nbsp;<span className='arrow'><FontAwesomeIcon icon={faLongArrowAltRight} size='lg' /></span></Learn>
+                </Row>
+            </JobContainer>
         </Container>
     )
     }
 )
 `
     flex: 50%;
-    // border: 2px solid ${(props: any) => props.theme.bg as string};
     border-top: 1px solid #083E2E;
     @media only screen and (max-width: 800px) {
         flex: 100%;
     }
 `
-
 
 const Roles:React.FC = styled.div`
     padding-bottom: 3rem;
@@ -73,6 +89,7 @@ type RProps = {
     className?: any
     children?: ReactNode
 }
+
 const RoleType:React.FC<RProps> = styled(
     ({
         className, selected, handleClick, children
