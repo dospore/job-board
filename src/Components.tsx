@@ -17,6 +17,7 @@ export const Title = styled.h1`
     color: #fff;
     font-size: 2rem;
     font-weight: 600;
+    margin-top: 1em;
     margin-bottom: 1em;
     width: 100%;
 
@@ -49,11 +50,11 @@ export const Button = styled.button
     border-color: #A6D792;
     font-weight: 600;
     color: #fff;
-    //box-shadow: 0 3px 6px #00000029;
 
     &[disabled] {
         opacity: 0.3;
     }
+  
     &[disabled]:hover {
         cursor: not-allowed;
     }

@@ -1,18 +1,34 @@
 import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
-import { Title, SubText, GridTheme } from './Components'
+import { Title, GridTheme } from './Components'
 import { Container as BContainer, Row } from 'styled-bootstrap-grid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 
-const Container = styled(BContainer)`
-    box-sizing: border-box;
+const JobContainer = styled.a
+`
+    .arrow {
+        display: none;
+    }
+    
+    &:hover {
+        text-decoration: none;
+        .title {
+            color: #A6D792;
+        }
+        .learn {
+            color: #A6D792;
+        }
+        .arrow {
+            display: block;
+        }
+    }
 `
 
-export const calcDays = (d1:Date, d2:Date) => {// To calculate the time difference of two dates
-    console.log(d1, d2)
-    var timeDiff = d2.getTime() - d1.getTime();
-    // To calculate the no. of days between two dates
-    return Math.round(timeDiff / (1000 * 3600 * 24));
-}
+const Container = styled(BContainer)
+`
+    box-sizing: border-box;
+`
 
 type JobType = {
     title: string // title of the job
@@ -23,22 +39,12 @@ type JobType = {
     category: { categoryName: string }
 }
 
-const FlexRow = styled(Row)`
-    //flex-wrap: nowrap;
-    //padding: 0 1em;
+const Learn = styled.div
 `
-
-// const Days = styled(SubText)`
-//     //text-align: right;
-// `
-
-const Learn = styled.a
-`
+    display: flex;
+    flex-direction: row;
     color: #fff;
     margin-bottom: 6rem;
-    &:hover {
-        color: #A6D792;
-    }
 `
 
 const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> =
@@ -46,42 +52,29 @@ styled(
     ({
         job, className
     }: { job: JobType, className: any } & { children?: ReactNode}) => {
-    const { title, location, employmentType, link } = job;
+    const { title, link } = job;
     return (
         <Container className={className}>
-            <FlexRow>
-                <SubText>
-                    {employmentType.typeName} / {location}
-                </SubText>
-                <Title>{title}</Title>
-                <Learn href={`${link}`}>
-                    Learn more
-                </Learn>
-            </FlexRow>
-            {/*<FlexRow>*/}
-            {/*    */}
-            {/*    /!*<Days>*!/*/}
-            {/*    /!*    /!*{calcDays(new Date(postDate), new Date())} days ago*!/*!/*/}
-            {/*    /!*    Available since {postDate}*!/*/}
-            {/*    /!*</Days>*!/*/}
-            {/*</FlexRow>*/}
+            <JobContainer href={`${link}`}>
+                <Row>
+                    <Title className='title'>{title}</Title>
+                    <Learn className='learn'><div>Learn more</div>&nbsp;&nbsp;<span className='arrow'><FontAwesomeIcon icon={faLongArrowAltRight} size='lg' /></span></Learn>
+                </Row>
+            </JobContainer>
         </Container>
     )
     }
 )
 `
     flex: 50%;
-    // border: 2px solid ${(props: any) => props.theme.bg as string};
     border-top: 1px solid #083E2E;
     @media only screen and (max-width: 800px) {
         flex: 100%;
     }
 `
 
-
 const Roles:React.FC = styled.div`
     padding-bottom: 3rem;
-    border-bottom: 1px solid #083E2E
     margin-bottom: 2px;
 `
 
@@ -96,6 +89,7 @@ type RProps = {
     className?: any
     children?: ReactNode
 }
+
 const RoleType:React.FC<RProps> = styled(
     ({
         className, selected, handleClick, children
@@ -103,7 +97,8 @@ const RoleType:React.FC<RProps> = styled(
     <button onClick={() => handleClick()} datatype={selected ? 'SELECTED' : ''} className={className}>
         {children}
     </button>
-)`
+)
+`
     font-size: 0.9em;
     border: none;
     background-color: #041F17;
@@ -126,9 +121,7 @@ const RoleType:React.FC<RProps> = styled(
     &:hover {
         cursor: pointer;
     }
-    // &:focus {
-    //     outline: none
-    // }
+
     &[datatype="SELECTED"] {
         color: #A6D792;
         //background: ${(props: any) => props.theme.primary as string};
@@ -161,9 +154,8 @@ const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className?: any 
         </GridTheme>
     )
 }
-)`
-    //flex-direction: column;
-    // margin: auto;
+)
+`
      padding: 4rem 0;
     //
     // &[data-name=container] {
