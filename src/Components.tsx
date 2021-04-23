@@ -41,34 +41,22 @@ export const SubText = styled.h2`
 
 export const Button = styled.button
 `
-    padding: 20px;
-    margin: 1.2rem 0;
-    width: 12rem;
+    margin: 2rem 0 6rem 0;
     //background: ${(props: any) => props.theme.primary as string};
     background-color: #041F17;
-    border-width: 0.5px;
-    border-color: #A6D792;
-    font-weight: 600;
-    color: #fff;
-
-    &[disabled] {
-        opacity: 0.3;
-    }
+    border: 1px solid #9ADA9A;
+    border-radius: 10px;
+    color: #9ADA9A;
+    transition: 0.5s;
+    max-width: 200px;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
   
-    &[disabled]:hover {
-        cursor: not-allowed;
-    }
-
-    @media screen and (max-width: 600px) {
-        width: 7rem;
-    }
-
     &:hover {
-        cursor: pointer;
-    }
-
-    &:focus {
-        outline: none
+      background-color: #9ADA9A;
+      color: #000;
+      cursor: pointer;
     }
 `
 
