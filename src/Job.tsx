@@ -14,7 +14,7 @@ export const JobInfo = styled(
                     {title}
                 </Title>
                 <SubText>
-                    {employmentType.typeName} / {location} <br/><br/>
+                    { employmentType.typeName } / { location.locationName } <br/><br/>
                 </SubText>
                 {children}
                 <a href={link} target="_blank" rel="noreferrer noopener">

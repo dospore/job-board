@@ -87,8 +87,7 @@ const SubBanner:React.FC = styled(
             </div>
         </GridTheme>
     )
-)
-`
+)`
     background: ${(props: any) => props.theme.bg as string};
     padding: 4rem 0;
     @media screen and (max-width: 600px) {
