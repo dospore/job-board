@@ -39,8 +39,7 @@ export const SubText = styled.h2`
     }
 `
 
-export const Button = styled.button
-`
+export const Button = styled.button`
     margin: 2rem 0 6rem 0;
     //background: ${(props: any) => props.theme.primary as string};
     background-color: #041F17;

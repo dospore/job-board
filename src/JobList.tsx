@@ -32,7 +32,7 @@ const Container = styled(BContainer)
 
 type JobType = {
     title: string // title of the job
-    location: 'Remote' | 'In House' // location of work
+    location: { locationName: string } // location of work
     employmentType: { typeName: string }
     postDate: Date // date the job add was posted
     link: string // url link to the job, prepend with /, something like /careers/slug
@@ -154,26 +154,8 @@ const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className?: any 
         </GridTheme>
     )
 }
-)
-`
+)`
      padding: 4rem 0;
-    //
-    // &[data-name=container] {
-    //     box-sizing: border-box;
-    // }
-    //
-    // > [data-name=col-xs-12]{
-    //     box-sizing: border-box;
-    // }
-    //
-    // > h1 {
-    //     color: ${(props: any) => props.theme.primary as string};
-    //     font-weight: 600;
-    // }
-    //
-    // @media screen and (max-width: 600px) {
-    //     margin: 1rem auto;
-    // }
 `
 
 export { Job, JobsList }
