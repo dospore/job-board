@@ -15,24 +15,20 @@ export const JobInfo = styled(
                 </Title>
                 <SubText>
                     { employmentTypes.map((type: Record<string, string>, index: number) => {
-                        if (employmentTypes.length === 1) {
+                        if (employmentTypes.length === 1 || index === 0) {
                             return `${type.typeName}`
-                        } else if (index === employmentTypes.length) {
-                            return `or ${type.typeName}`
-                        } else if (index === 0) {
-                            return `${type.typeName}`
+                        } else if (index === (employmentTypes.length - 1)) {
+                            return ` or ${type.typeName}`
                         } else {
                             return `, ${type.typeName}`
                         }
                     })}
-                        / 
-                    { jobLocations.map((location: any, index: number) => {
-                        if (jobLocations.length === 1) {
+                    {` / `}
+                    { jobLocations.map((location: Record<string, string>, index: number) => {
+                        if (jobLocations.length === 1 || index === 0) {
                             return `${location.locationName}`
-                        } else if (index === jobLocations.length) {
-                            return `or ${location.locationName}`
-                        } else if (index === 0) {
-                            return `${location.locationName}`
+                        } else if (index === (jobLocations.length - 1)) {
+                            return ` or ${location.locationName}`
                         } else {
                             return `, ${location.locationName}`
                         }
