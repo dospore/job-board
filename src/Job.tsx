@@ -6,7 +6,7 @@ import { Title, SubText, Button, GridTheme } from './Components'
 export const JobInfo = styled(
     ({
         className, children, title,
-        location, employmentType, link
+        jobLocations, employmentTypes, link
     }) => (
         <GridTheme>
             <Container className={className}>
@@ -14,7 +14,30 @@ export const JobInfo = styled(
                     {title}
                 </Title>
                 <SubText>
-                    { employmentType.typeName } / { location.locationName } <br/><br/>
+                    { employmentTypes.map((type: Record<string, string>, index: number) => {
+                        if (employmentTypes.length === 1) {
+                            return `${type.typeName}`
+                        } else if (index === employmentTypes.length) {
+                            return `or ${type.typeName}`
+                        } else if (index === 0) {
+                            return `${type.typeName}`
+                        } else {
+                            return `, ${type.typeName}`
+                        }
+                    })}
+                        / 
+                    { jobLocations.map((location: any, index: number) => {
+                        if (jobLocations.length === 1) {
+                            return `${location.locationName}`
+                        } else if (index === jobLocations.length) {
+                            return `or ${location.locationName}`
+                        } else if (index === 0) {
+                            return `${location.locationName}`
+                        } else {
+                            return `, ${location.locationName}`
+                        }
+                    })}
+                    <br/><br/>
                 </SubText>
                 {children}
                 <a href={link} target="_blank" rel="noreferrer noopener">
@@ -31,3 +54,8 @@ export const JobInfo = styled(
         padding-top: 2rem;
     }
 `
+
+JobInfo.defaultProps = {
+    jobLocations: [],
+    employmentTypes: []
+}
