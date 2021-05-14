@@ -23,7 +23,7 @@ export const JobInfo = styled(
                             return `, ${type.typeName}`
                         }
                     })}
-                    {` / `}
+                    <span>&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;</span>
                     { jobLocations.map((location: Record<string, string>, index: number) => {
                         if (jobLocations.length === 1 || index === 0) {
                             return `${location.locationName}`
