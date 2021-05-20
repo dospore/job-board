@@ -26,7 +26,7 @@ export const Title = styled.h1`
 `
 
 export const SubText = styled.h2`
-    color: ${(props: any) => props.theme.fgActive as string};
+    color: ${(props: any) => props.theme.primary as string};
     font-size: 0.9rem;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
@@ -40,9 +40,9 @@ export const SubText = styled.h2`
 export const Button = styled.button`
     margin: 2rem 0 6rem 0;
     background: ${(props: any) => props.theme.bg as string};
-    border: 1px solid ${(props: any) => props.theme.fgActive as string};
+    border: 1px solid ${(props: any) => props.theme.primary as string};
     border-radius: 10px;
-    color: ${(props: any) => props.theme.fgActive as string};
+    color: ${(props: any) => props.theme.primary as string};
     transition: 0.5s;
     max-width: 200px;
     width: 100%;
@@ -50,8 +50,8 @@ export const Button = styled.button`
     text-align: center;
   
     &:hover {
-      background-color: ${(props: any) => props.theme.fgActive as string};
-      color: ${(props: any) => props.theme.buttonActive as string};
+      background-color: ${(props: any) => props.theme.primary as string};
+      color: ${(props: any) => props.theme.secondary as string};
       cursor: pointer;
     }
 `

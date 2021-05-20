@@ -13,10 +13,10 @@ const JobContainer = styled.a`
     &:hover {
         text-decoration: none;
         .title {
-            color: ${(props: any) => props.theme.fgActive as string};
+            color: ${(props: any) => props.theme.primary as string};
         }
         .learn {
-            color: ${(props: any) => props.theme.fgActive as string};
+            color: ${(props: any) => props.theme.primary as string};
         }
         .arrow {
             display: block;
@@ -109,7 +109,7 @@ const RoleType:React.FC<RProps> = styled(({ className, selected, handleClick, ch
     }
 
     &[datatype="SELECTED"] {
-        color: ${(props: any) => props.theme.fgActive as string};
+        color: ${(props: any) => props.theme.primary as string};
     }
 `
 
