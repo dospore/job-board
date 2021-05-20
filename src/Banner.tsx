@@ -40,6 +40,7 @@ const BannerText = styled(
     text-align: center;
     height: fit-content;
     padding-bottom: 20px;
+  
     @media screen and (max-width: 600px) {
         font-size: 2.5rem;
     }
@@ -75,19 +76,15 @@ const StyledContainer = styled(Container)`
     }
 `
 
-const SubBanner:React.FC = styled(
-    ({
-        className, children
-    }) => (
-        <GridTheme>
-            <div className={className}>
-                <StyledContainer>
-                    {children}
-                </StyledContainer>
-            </div>
-        </GridTheme>
-    )
-)`
+const SubBanner:React.FC = styled(({ className, children }) => (
+    <GridTheme>
+        <div className={className}>
+            <StyledContainer>
+                {children}
+            </StyledContainer>
+        </div>
+    </GridTheme>
+))`
     background: ${(props: any) => props.theme.bg as string};
     padding: 4rem 0;
     @media screen and (max-width: 600px) {

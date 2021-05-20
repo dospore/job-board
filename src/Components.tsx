@@ -13,9 +13,8 @@ export const gridTheme = {
 }
 
 export const Title = styled.h1`
-    //color: ${(props: any) => props.theme.primary as string};
-    color: #fff;
-    font-size: 2rem;
+    color: ${(props: any) => props.theme.fg as string};
+    font-size: 1.8rem;
     font-weight: 600;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -27,8 +26,7 @@ export const Title = styled.h1`
 `
 
 export const SubText = styled.h2`
-    //color: ${(props: any) => props.theme.secondary as string};
-    color: #A6D792;
+    color: ${(props: any) => props.theme.primary as string};
     font-size: 0.9rem;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
@@ -41,11 +39,10 @@ export const SubText = styled.h2`
 
 export const Button = styled.button`
     margin: 2rem 0 6rem 0;
-    //background: ${(props: any) => props.theme.primary as string};
-    background-color: #041F17;
-    border: 1px solid #9ADA9A;
+    background: ${(props: any) => props.theme.bg as string};
+    border: 1px solid ${(props: any) => props.theme.primary as string};
     border-radius: 10px;
-    color: #9ADA9A;
+    color: ${(props: any) => props.theme.primary as string};
     transition: 0.5s;
     max-width: 200px;
     width: 100%;
@@ -53,8 +50,8 @@ export const Button = styled.button`
     text-align: center;
   
     &:hover {
-      background-color: #9ADA9A;
-      color: #000;
+      background-color: ${(props: any) => props.theme.primary as string};
+      color: ${(props: any) => props.theme.bg as string};
       cursor: pointer;
     }
 `

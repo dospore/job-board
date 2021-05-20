@@ -5,8 +5,7 @@ import { Container as BContainer, Row } from 'styled-bootstrap-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 
-const JobContainer = styled.a
-`
+const JobContainer = styled.a`
     .arrow {
         display: none;
     }
@@ -14,19 +13,19 @@ const JobContainer = styled.a
     &:hover {
         text-decoration: none;
         .title {
-            color: #A6D792;
+            color: ${(props: any) => props.theme.primary as string};
         }
         .learn {
-            color: #A6D792;
+            color: ${(props: any) => props.theme.primary as string};
         }
         .arrow {
             display: block;
+            margin-top: 0.2vh;
         }
     }
 `
 
-const Container = styled(BContainer)
-`
+const Container = styled(BContainer)`
     box-sizing: border-box;
 `
 
@@ -39,19 +38,15 @@ type JobType = {
     category: { categoryName: string }
 }
 
-const Learn = styled.div
-`
+const Learn = styled.div`
     display: flex;
     flex-direction: row;
-    color: #fff;
+    color: ${(props: any) => props.theme.fg as string};
     margin-bottom: 6rem;
 `
 
-const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }> =
-styled(
-    ({
-        job, className
-    }: { job: JobType, className: any } & { children?: ReactNode}) => {
+const Job:React.FC<{ job: JobType, className?: any } & { children?: ReactNode }>
+  = styled(({ job, className }: { job: JobType, className: any } & { children?: ReactNode}) => {
     const { title, link } = job;
     return (
         <Container className={className}>
@@ -63,9 +58,7 @@ styled(
             </JobContainer>
         </Container>
     )
-    }
-)
-`
+})`
     flex: 50%;
     border-top: 1px solid #083E2E;
     @media only screen and (max-width: 800px) {
@@ -90,24 +83,18 @@ type RProps = {
     children?: ReactNode
 }
 
-const RoleType:React.FC<RProps> = styled(
-    ({
-        className, selected, handleClick, children
-    }: RProps ) =>
+const RoleType:React.FC<RProps> = styled(({ className, selected, handleClick, children }: RProps ) =>
     <button onClick={() => handleClick()} datatype={selected ? 'SELECTED' : ''} className={className}>
         {children}
     </button>
-)
-`
+)`
     font-size: 0.9em;
     border: none;
-    background-color: #041F17;
-    // background: ${(props: any) => props.theme.bg as string};
-    color: #fff;
-    // color: ${(props: any) => props.theme.primary as string};
+    background: ${(props: any) => props.theme.bg as string};
+    color: ${(props: any) => props.theme.fg as string};
     padding: 10px 2rem;
-     width: 48%;
-     margin: 5px 1% 5px 1%;
+    width: 48%;
+    margin: 5px 1% 5px 1%;
 
     @media screen and (min-width: 600px) {
         width: 24%;
@@ -123,18 +110,15 @@ const RoleType:React.FC<RProps> = styled(
     }
 
     &[datatype="SELECTED"] {
-        color: #A6D792;
-        //background: ${(props: any) => props.theme.primary as string};
+        color: ${(props: any) => props.theme.success as string};
+        background: ${(props: any) => props.theme.primary as string};
     }
 `
 
-const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className?: any }> = styled(
-    ({
-        jobs, roleTypes, className
-    }: { jobs: JobType[], roleTypes: string[], className: any }) => {
+const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className?: any }>
+  = styled(({ jobs, roleTypes, className }: { jobs: JobType[], roleTypes: string[], className: any }) => {
 
     const [selectedRole, setRoleType] = useState('All Roles');
-
     const filteredJobs = jobs.filter(job => selectedRole === "All Roles" || selectedRole.toLowerCase() === job.category.categoryName);
 
     return (
@@ -153,8 +137,7 @@ const JobsList:React.FC<{ jobs: JobType[], roleTypes: string[], className?: any 
             </Container>
         </GridTheme>
     )
-}
-)`
+})`
      padding: 4rem 0;
 `
 
