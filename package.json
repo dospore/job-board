@@ -1,6 +1,6 @@
 {
   "name": "@mycelium-ethereum/job-board",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Job Board component",
   "main": "dist/index.js",
   "dependencies": {
