@@ -13,10 +13,10 @@ const JobContainer = styled.a`
     &:hover {
         text-decoration: none;
         .title {
-            color: ${(props: any) => props.theme.active as string};
+            color: ${(props: any) => props.theme.fgActive as string};
         }
         .learn {
-            color: ${(props: any) => props.theme.active as string};
+            color: ${(props: any) => props.theme.fgActive as string};
         }
         .arrow {
             display: block;
@@ -40,7 +40,7 @@ type JobType = {
 const Learn = styled.div`
     display: flex;
     flex-direction: row;
-    color: ${(props: any) => props.theme.normal as string};
+    color: ${(props: any) => props.theme.fg as string};
     margin-bottom: 6rem;
 `
 
@@ -90,7 +90,7 @@ const RoleType:React.FC<RProps> = styled(({ className, selected, handleClick, ch
     font-size: 0.9em;
     border: none;
     background: ${(props: any) => props.theme.bg as string};
-    color: ${(props: any) => props.theme.normal as string};
+    color: ${(props: any) => props.theme.fg as string};
     padding: 10px 2rem;
     width: 48%;
     margin: 5px 1% 5px 1%;
@@ -109,7 +109,7 @@ const RoleType:React.FC<RProps> = styled(({ className, selected, handleClick, ch
     }
 
     &[datatype="SELECTED"] {
-        color: ${(props: any) => props.theme.active as string};
+        color: ${(props: any) => props.theme.fgActive as string};
     }
 `
 
