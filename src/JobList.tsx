@@ -110,7 +110,7 @@ const RoleType:React.FC<RProps> = styled(({ className, selected, handleClick, ch
     }
 
     &[datatype="SELECTED"] {
-        color: ${(props: any) => props.theme.success as string};
+        color: ${(props: any) => props.theme.secondary as string};
         background: ${(props: any) => props.theme.primary as string};
     }
 `
